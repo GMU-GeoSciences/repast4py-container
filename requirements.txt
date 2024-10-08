@@ -1,0 +1,10 @@
+mpi4py==4.0.0 #https://pypi.org/project/mpi4py/
+numpy==1.26.0 #2.1.1
+pandas==2.2.3
+numba==0.60.0
+coverage==7.6.1 #Is this neccesary?
+torch==2.4.1
+networkx==3.3
+pyyaml==6.0.2
+Cython==3.0.11
+# repast4py==1.1.6 # Can't install from requirements.txt file...
