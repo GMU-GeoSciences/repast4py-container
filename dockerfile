@@ -1,10 +1,13 @@
-FROM python:3.13.0-slim
+FROM python:3.10.0-slim
 # https://stackoverflow.com/questions/78599865/how-to-install-missing-python-modules-on-distroless-image
+
+RUN apt-get update && \
+    apt-get install -y  mpich \
+        && rm -rf /var/lib/apt/lists/*
 
 # Install the python requirements
 COPY ./requirements.txt ./requirements.txt
 RUN pip install -r ./requirements.txt
-
 
 # FROM nvcr.io/nvidia/distroless/python:3.12-v3.4.2
 # ==========================================================================================
@@ -13,11 +16,6 @@ RUN pip install -r ./requirements.txt
 # - https://catalog.ngc.nvidia.com/orgs/nvidia/teams/distroless/containers/python/tags
 # - https://github.com/GoogleContainerTools/distroless/blob/main/examples/python3/Dockerfile
 # ==========================================================================================
-
-RUN apt-get update && \
-    apt-get install -y  mpich \
-        && rm -rf /var/lib/apt/lists/*
-
 
 # Install repast4py
 RUN env CC=mpicxx CXX=mpicxx pip install repast4py
