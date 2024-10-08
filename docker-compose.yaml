@@ -1,0 +1,19 @@
+version: '3.7'
+#-----------------
+# Demo compose file for the repast4py environment
+#-----------------
+services:
+  repast4py:
+    # Reads TCP port from AIShub
+    hostname: aishub_streamer
+    build: .
+    volume:
+      - ./demo/:/tmp
+    env_file:
+      - .env 
+    command: python /tmp/test.py
+    restart: unless-stopped 
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m 
