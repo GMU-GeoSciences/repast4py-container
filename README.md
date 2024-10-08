@@ -24,7 +24,9 @@ Running code inside the Docker image would require mounting the folder into the 
 ```
 git clone git@github.com:GMU-GeoSciences/repast4py-container.git
 cd repast4py-container.git
-
+<edit the mount path in the docker compose file to point to your code>
+docker compose build
+docker compose up
 ```
 
 ### Deploy on HPC Cluster
