@@ -24,7 +24,9 @@ Running code inside the Docker image would require mounting the folder into the 
 ```
 git clone git@github.com:GMU-GeoSciences/repast4py-container.git
 cd repast4py-container.git
-
+<edit the mount path in the docker compose file to point to your code>
+docker compose build
+docker compose up
 ```
 
 ### Deploy on HPC Cluster
@@ -36,6 +38,10 @@ GMU's HPC Cluster (Hopper) expects a Singularity file instead of a Docker image.
 cd /containers/hopper/UserContainers/$USER
 module load singularity
 singularity build repast4py_latest.sif docker:ghcr.io/gmu-geosciences/repast4py-container:latest
+# This takes some time...
+cd /$HOME/path/to/script
+salloc -p normal -q normal -n 1 --ntasks-per-node=24 --mem=50GB
+singularity run --nv /containers/hopper/UserContainers/$USER/repast4py_latest.sif mpirun -n 4 python rndwalk.py random_walk.yaml
 ```
 
 Running custom code using the Repast4py Singularity container is also easy. By default there are certain paths that are mounted into the container on run. 
