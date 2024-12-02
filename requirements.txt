@@ -11,5 +11,6 @@ networkx==3.3
 pyyaml==6.0.2 
 Cython==3.0.11 
 llvmlite==0.43.0
-
-# repast4py==1.1.6 # Can't install from requirements.txt file...
+OWSLib==0.32.0
+rasterio==1.4.2
+scipy==1.14.1
