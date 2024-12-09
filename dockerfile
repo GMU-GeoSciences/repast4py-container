@@ -1,13 +1,13 @@
-FROM python:3.10.0-slim
-# https://stackoverflow.com/questions/78599865/how-to-install-missing-python-modules-on-distroless-image
-
-RUN apt-get update && \
-    apt-get install -y  mpich \
-        && rm -rf /var/lib/apt/lists/*
+FROM quay.io/pawsey/hpc-python:3.11-ubuntu23.04
+#https://pawseysc.github.io/containers-astro-python-workshop/3.hpc/index.html
+#docker pull quay.io/pawsey/mpich-basequay.io/pawsey/mpich-base
+#RUN apt-get update && \
+#    apt-get install -y  mpich \
+#        && rm -rf /var/lib/apt/lists/*
 
 # Install the python requirements
 COPY ./requirements.txt ./requirements.txt
-RUN pip install -r ./requirements.txt
+RUN pip3 --no-cache-dir install --break-system-packages -r ./requirements.txt
 
 # FROM nvcr.io/nvidia/distroless/python:3.12-v3.4.2
 # ==========================================================================================
@@ -18,7 +18,7 @@ RUN pip install -r ./requirements.txt
 # ==========================================================================================
 
 # Install repast4py
-RUN env CC=mpicxx CXX=mpicxx pip install repast4py
+RUN env CC=mpicxx CXX=mpicxx pip3 --no-cache-dir install --break-system-packages repast4py
 
 # Set the PYTHONPATH to include the /repast4py folder which contains the core folder
 ENV PYTHONPATH=/repast4py/src

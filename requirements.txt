@@ -1,7 +1,7 @@
 # Using python:3.10.0-slim
 # Use CPU Torch for a smaller install
---extra-index-url https://download.pytorch.org/whl/cpu 
-torch # https://github.com/Repast/repast4py/issues/68
+# --extra-index-url https://download.pytorch.org/whl/cpu 
+# torch # https://github.com/Repast/repast4py/issues/68
 mpi4py==4.0.0 #https://pypi.org/project/mpi4py/
 numpy==1.26.4 #2.1.1
 pandas==2.2.3
